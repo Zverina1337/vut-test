@@ -1,12 +1,19 @@
 <template>
   <div class="flex flex-col gap-1">
-    <label v-if="label" :for="id">{{ label }}</label>
-    <select 
-      v-model="value" 
-      v-bind="attrs"
+    <label
+      v-if="label"
+      :for="id"
+      class="text-sm font-medium text-gray-700"
     >
-      <option 
-        v-for="option in options" 
+      {{ label }}
+    </label>
+    <select
+      v-model="value"
+      v-bind="attrs"
+      class="border border-gray-300 rounded-md px-3 py-1.5 text-sm bg-white outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500 cursor-pointer"
+    >
+      <option
+        v-for="option in options"
         :value="getOptionValue(option)"
         :key="getOptionLabel(option)"
       >

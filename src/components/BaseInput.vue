@@ -1,25 +1,26 @@
 <template>
-  <div class="flex flex-col">
-    <label 
-      v-if="label" 
+  <div class="flex flex-col gap-1">
+    <label
+      v-if="label"
       :for="id"
+      class="text-sm font-medium text-gray-700"
     >
       {{ label }}
-      <span v-if="attrs.required" aria-label="обязательное поле">*</span>
+      <span v-if="attrs.required" class="text-red-500" aria-label="обязательное поле">*</span>
     </label>
-    <input 
+    <input
       v-model="value"
       v-bind="attrs"
-      class="border"
-      :id 
-      :class="{ 'border-red-500': error?.flag }"
+      class="border border-gray-300 rounded-md px-3 py-1.5 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+      :id
+      :class="{ 'border-red-500 focus:border-red-500 focus:ring-red-500': error?.flag }"
       :aria-invalid="error?.flag ? 'true' : 'false'"
       :aria-describedby="error?.flag ? errorId : undefined"
     >
     <span
       v-if="error?.flag"
       :id="errorId"
-      class="text-red-500 text-sm"
+      class="text-red-500 text-xs mt-0.5"
       role="alert"
       aria-live="assertive"
     >
